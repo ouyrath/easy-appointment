@@ -1,0 +1,9 @@
+{
+  "name": "Easy Appointment",
+  "short_name": "Appointments",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#2457d6",
+  "description": "Mobile-friendly appointment booking web app."
+}
