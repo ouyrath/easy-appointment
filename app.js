@@ -114,8 +114,11 @@ document.getElementById('apptForm').addEventListener('submit',async e=>{
   document.getElementById('apptForm').classList.add('hidden');
   document.querySelector('.progress').classList.add('hidden');
   document.getElementById('confirmation').classList.remove('hidden');
+  const emailNote=data.confirmation_email_sent
+   ? '<br><span class="email-success">Confirmation email sent.</span>'
+   : '<br><span class="email-note">Appointment saved. Email confirmation is not configured yet.</span>';
   document.getElementById('confirmationText').innerHTML=
-   `Confirmation <strong>${a.confirmation_code}</strong><br>${a.location_name}<br>${a.appointment_date} at ${formatDbTime(a.appointment_time)}`;
+   `Confirmation <strong>${a.confirmation_code}</strong><br>${a.location_name}<br>${a.appointment_date} at ${formatDbTime(a.appointment_time)}${emailNote}`;
  }catch(err){
   msg.textContent=err.message;
  }finally{
