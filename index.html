@@ -68,25 +68,26 @@
           <h3>4. Your information</h3>
           <div class="grid2">
             <label>First name
-              <input id="firstName" type="text" required autocomplete="given-name" />
+              <input id="firstName" type="text" required autocomplete="given-name" maxlength="80" />
             </label>
             <label>Last name
-              <input id="lastName" type="text" required autocomplete="family-name" />
+              <input id="lastName" type="text" required autocomplete="family-name" maxlength="80" />
             </label>
           </div>
           <label>Phone number
-            <input id="phone" type="tel" required autocomplete="tel" />
+            <input id="phone" type="tel" required autocomplete="tel" maxlength="24" />
           </label>
           <label>Email
-            <input id="email" type="email" required autocomplete="email" />
+            <input id="email" type="email" required autocomplete="email" maxlength="200" />
           </label>
           <label class="check">
             <input id="consent" type="checkbox" required />
-            <span>I agree to receive appointment confirmation and reminder messages.</span>
+            <span>I agree to provide my contact information for this appointment.</span>
           </label>
+          <p id="formMessage" class="error"></p>
           <div class="actions">
             <button type="button" class="secondary back">Back</button>
-            <button type="submit" class="primary">Book appointment</button>
+            <button id="bookBtn" type="submit" class="primary">Book appointment</button>
           </div>
         </div>
       </form>
@@ -100,13 +101,34 @@
     </section>
 
     <section class="mini-card">
-      <h3>Need to change or cancel?</h3>
-      <p>Enter the confirmation number from your booking email.</p>
-      <div class="inline">
-        <input id="manageCode" type="text" placeholder="Confirmation number" />
-        <button id="lookupBtn" class="secondary">Find</button>
-      </div>
+      <h3>Manage your appointment</h3>
+      <p>Enter your confirmation number and the email used when booking.</p>
+      <label>Confirmation number
+        <input id="manageCode" type="text" placeholder="EA-XXXXXX" maxlength="20" />
+      </label>
+      <label>Email
+        <input id="manageEmail" type="email" placeholder="you@example.com" maxlength="200" />
+      </label>
+      <button id="lookupBtn" class="secondary full">Find appointment</button>
       <p id="lookupMessage" class="muted"></p>
+
+      <div id="manageResult" class="manage-result hidden">
+        <h4>Your appointment</h4>
+        <p id="manageDetails"></p>
+        <div class="actions">
+          <button id="showRescheduleBtn" class="secondary">Change date/time</button>
+          <button id="cancelBtn" class="danger">Cancel appointment</button>
+        </div>
+
+        <div id="reschedulePanel" class="hidden">
+          <label>New date
+            <input id="newDate" type="date" />
+          </label>
+          <div id="newTimeList" class="time-grid"></div>
+          <button id="rescheduleBtn" class="primary">Save new date/time</button>
+          <p id="manageMessage" class="error"></p>
+        </div>
+      </div>
     </section>
   </main>
 
